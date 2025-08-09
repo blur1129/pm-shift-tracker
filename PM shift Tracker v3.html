@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>PB Video Uploader</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 30px;
+    }
+
+    .file-info {
+      background: #222;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 10px;
+      width: 80%;
+      position: relative;
+      transition: background 0.3s;
+    }
+
+    .file-info.checked {
+      background-color: #016d65;
+    }
+
+    #drop-area {
+      border: 3px dashed #888;
+      padding: 200px;
+      margin-bottom: 20px;
+      cursor: pointer;
+      background: #0af;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background: #555;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    input,
+    select {
+      margin: 5px;
+      padding: 8px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .top-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .top-left {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .icon-btn {
+      background: transparent;
+      font-size: 18px;
+      margin-left: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1><span style="font-weight: bold; font-size: 24px; color: #0af">OVG PM Shift<p></p></span> Submission Tracker Tool
+  </h1>
+
+  <div>
+    <input type="text" id="gameAssigned" placeholder="Game Title" />
+
+    <label for="fullName">Full Name:</label>
+    <select id="fullName">
+      <option value="">-- Choose --</option>
+      <option value="Estoque, Blair B.">Estoque, Blair B.</option>
+      <option value="Bullo, Alberto A.">Bullo, Alberto A.</option>
+      <option value="Duria, Carl Jorich">Duria, Carl Jorich</option>
+      <option value="Jimenez, Prince Ogie">Jimenez, Prince Ogie</option>
+      <option value="Enriquez, Ryzza Mae">Enriquez, Ryzza Mae</option>
+      <option value="Bargayo, Eldion ">Bargayo, Eldion </option>
+      <option value="Conol, Schnley Mark G. ">Conol, Schnley Mark G. </option>
+      <option value="Homillada, Edson">Homillada, Edson</option>
+      <option value="Jumel, Suan">Jumel, Suan</option>
+      <option value="Migallon, Joyce A.">Migallon, Joyce A.</option>
+      <option value="Patlunag, Jinel D.">Patlunag, Jinel D.</option>
+      <option value="Taganas, Idol">Taganas, Idol</option>
+      <option value="Zurita, Rosyl John">Zurita, Rosyl John </option>
+      <option value="Espirat, Keith Chester T.">Espirat, Keith Chester T.</option>
+      <option value="Magallanes, Ryle Angelo">Magallanes, Ryle Angelo</option>
+      <option value="Guinayhan, John Clifford">Guinayhan, John Clifford</option>
+      <option value="Abella, John Russel L">Abella, John Russel L</option>
+      <option value="Balanay, Nick Brian">Balanay, Nick Brian</option>
+      <option value="Balaoro, Russel Miles T.">Balaoro, Russel Miles T. </option>
+      <option value="Caringal, Nestor Jr.">Caringal, Nestor Jr.</option>
+      <option value="De La Peña, James Exequiel D.">De La Peña, James Exequiel D. </option>
+      <option value="Ebgos , Quiency Jealou">Ebgos , Quiency Jealou </option>
+      <option value="Salan, Nicole ">Salan, Nicole </option>
+      <option value="Tagole, Jimmy ">Tagole, Jimmy </option>
+      <option value="Tagole, Jomarie ">Tagole, Jomarie </option>
+      <option value="Terrado, Aaron Paul">Terrado, Aaron Paul</option>
+      <option value="Rosete, Von Russel C.">Rosete, Von Russel C.</option>
+      <option value="Awayan, Jan Robert L.">Awayan, Jan Robert L. </option>
+      <option value="Silagan Jr., Raul">Silagan Jr., Raul</option>
+      <option value="Cenia, Charise">Cenia, Charise</option>
+      <option value="Pacifico, Edward Marlo V.">Pacifico, Edward Marlo V.</option>
+      <option value="Sheelby, Dannie G.">Sheelby, Dannie G.</option>
+      <option value="Aguilos, Carlos Joem">Aguilos, Carlos Joem</option>
+      <option value="Abella, Sheina Jean">Abella, Sheina Jean </option>
+      <option value="Alcantara, Jay M.">Alcantara, Jay M.</option>
+      <option value="Colegio, Fatima Jane D.">Colegio, Fatima Jane D.</option>
+      <option value="Digabe, Ervin E.">Digabe, Ervin E.</option>
+      <option value="Cabahug, Jake Michael C.">Cabahug, Jake Michael C.</option>
+      <option value="Pahilan, Jazzel Kurt D.">Pahilan, Jazzel Kurt D.</option>
+      <option value="Crisologo, Larissa Angel S.">Crisologo, Larissa Angel S.</option>
+      <option value="Arrachchige, Veena Bangamu">Arrachchige, Veena Bangamu</option>
+      <option value=" Señara, Fil Marc"> Señara, Fil Marc</option>
+      <option value="Taurac, Amar L.">Taurac, Amar L.</option>
+
+    </select>
+
+    <label for="outlierEmail">Outlier Email:</label>
+    <select id="outlierEmail">
+      <option value="">-- Choose --</option>
+      <option value="blair.estoque19@gmail.com+outlier">blair.estoque19@gmail.com+outlier</option>
+      <option value="albertbullo20@gmail.com+outlier">albertbullo20@gmail.com+outlier</option>
+      <option value="cjduria.personal@gmail.com+outlier">cjduria.personal@gmail.com+outlier</option>
+      <option value="prinsipeogiejimenez25@gmail.com+outlier">prinsipeogiejimenez25@gmail.com+outlier</option>
+      <option value="chiiiiik98@gmail.com+outlier">chiiiiik98@gmail.com+outlier</option>
+      <option value="eldionbargayo811@gmail.com+outlier">eldionbargayo811@gmail.com+outlier</option>
+      <option value="schnleymark@gmail.com+outlier">schnleymark@gmail.com+outlier</option>
+      <option value="gunplashopcdo@gmail.com+outlier">gunplashopcdo@gmail.com+outlier</option>
+      <option value="jumelsuan23@gmail.com+outlier">jumelsuan23@gmail.com+outlier</option>
+      <option value="joycemigallon@gmail.com+outlier">joycemigallon@gmail.com+outlier</option>
+      <option value="jdpatlunag@gmail.com+outlier">jdpatlunag@gmail.com+outlier</option>
+      <option value="idolskooy420@gmail.com+outlier">idolskooy420@gmail.com+outlier</option>
+      <option value="rosyyyljohn@gmail.com+outlier">rosyyyljohn@gmail.com+outlier</option>
+      <option value="docbengerms@gmail.com+outlier">docbengerms@gmail.com+outlier</option>
+      <option value="magallanes.ryle@gmail.com+outlier">magallanes.ryle@gmail.com+outlier</option>
+      <option value="guinayhan1208@gmail.com+outlier">guinayhan1208@gmail.com+outlier</option>
+      <option value="russelxabella@gmail.com+outlier">russelxabella@gmail.com+outlier</option>
+      <option value="nickbrianbalanay@gmail.com+outlier">nickbrianbalanay@gmail.com+outlier</option>
+      <option value="russelbalaoro6@gmail.com+outlier">russelbalaoro6@gmail.com+outlier </option>
+      <option value="ncaringaljr@gmail.com+outlier">ncaringaljr@gmail.com+outlier </option>
+      <option value="delapenaj905@gmail.com+outlier">delapenaj905@gmail.com+outlier </option>
+      <option value="jealouquiency@gmail.com+outlier">jealouquiency@gmail.com+outlier </option>
+      <option value="salannicole08@gmail.com+outlier">salannicole08@gmail.com+outlier </option>
+      <option value="jimmytagole@gmail.com+outlier">jimmytagole@gmail.com+outlier </option>
+      <option value="jomtags@gmail.com+outlier">jomtags@gmail.com+outlier </option>
+      <option value="aaronpaulvoron@gmail.com+outlier">aaronpaulvoron@gmail.com+outlier </option>
+      <option value="vrusselrosete2004@gmail.com+outlier">vrusselrosete2004@gmail.com+outlier </option>
+      <option value="jawayan72@gmail.com+outlier">jawayan72@gmail.com+outlier </option>
+      <option value="dicegonzairel@gmail.com+outlier">dicegonzairel@gmail.com+outlier </option>
+      <option value="cjaguilos2810@gmail.com+outlier">cjaguilos2810@gmail.com+outlier </option>
+      <option value="sheinaabella09@gmail.com+outlier">sheinaabella09@gmail.com+outlier </option>
+      <option value="alcantarashamila659@gmail.com+outlier">alcantarashamila659@gmail.com+outlier </option>
+      <option value="ervin.digabe@remotasks.com+outlier">ervin.digabe@remotasks.com+outlier </option>
+      <option value="veena.bangamuarrachchige00@gmail.com+outlier">veena.bangamuarrachchige00@gmail.com+outlier </option>
+      <option value="amartaurac72@gmail.com+outlier">amartaurac72@gmail.com+outlier </option>
+      <option value=""> </option>
+      <option value=""> </option>
+
+      
+
+    </select>
+
+    <label for="room">Room Assignment:</label>
+    <select id="room">
+      <option value="RPM 4F Grabiel">RPM 4F Grabiel</option>
+    </select>
+
+    <label for="shift">Shift:</label>
+    <select id="shift">
+      <option value="PM">PM</option>
+    </select>
+
+    <label for="support">Support:</label>
+    <select id="support">
+      <option value="">-- Select Support --</option>
+      <option value="carumba, mark glean alindajao">Carumba, Mark Glean Alindajao</option>
+      <option value="agan, barly pril jagnas">Agan, Barly Pril Jagnas</option>
+      <option value="trinidad, maureen may s.">Trinidad, Maureen May S.</option>
+    </select>
+
+
+    <label for="station-no">Seat No.:</label>
+    <select id="station-no">
+      <option value="">Choose</option>
+    </select>
+
+    <script>
+      // Fill Station Dropdown dynamically with default "Seat No. 1" selected
+      const stationSelect = document.getElementById('station-no');
+      for (let i = 1; i <= 50; i++) {
+        const option = document.createElement('option');
+        option.value = `Seat No. ${i}`;
+        option.text = `Seat No. ${i}`;
+        if (i === 1) option.selected = true; // prefill Seat No. 1
+        stationSelect.appendChild(option);
+      }
+    </script>
+    <p></p><p></p><p></p>
+
+
+    <div id="drop-area"><p style="font-weight: bold; font-size: 24px; color:rgb(0, 0, 0);">Drop your video files here</p></div>
+    <div id="file-list"></div>
+
+    <script>
+      let fileCounter = 0;
+
+      const dropArea = document.getElementById('drop-area');
+      const fileList = document.getElementById('file-list');
+
+      dropArea.addEventListener('dragover', e => {
+        e.preventDefault();
+        dropArea.style.borderColor = '#0af';
+      });
+
+      dropArea.addEventListener('dragleave', () => {
+        dropArea.style.borderColor = '#888';
+      });
+
+      dropArea.addEventListener('drop', e => {
+        e.preventDefault();
+        dropArea.style.borderColor = '#888';
+
+        [...e.dataTransfer.files].forEach(file => {
+          if (!file.type.startsWith('video/')) {
+            alert('Only video files allowed.');
+            return;
+          }
+
+          const video = document.createElement('video');
+          video.preload = 'metadata';
+          video.src = URL.createObjectURL(file);
+
+          video.onloadedmetadata = () => {
+            const duration = video.duration;
+            const durationStr = formatDuration(duration);
+            const fileSize = formatFileSize(file.size);
+
+            fileCounter++;
+            const div = document.createElement('div');
+            div.className = 'file-info';
+
+            div.innerHTML = `
+        <div class="top-left">#${fileCounter} - ${file.name}</div>
+        <div class="top-right">
+          <button class="icon-btn" onclick="toggleCheck(this)">✔️</button>
+          <button class="icon-btn" onclick="removeFile(this)">❌</button>
+        </div>
+        <p><strong>File:</strong> ${file.name}</p>
+        <p><strong>Video Length:</strong> ${durationStr}</p>
+        <p><strong>File Size (GB):</strong> ${fileSize}</p>
+        <input type="text" placeholder="Upload ID" class="upload-id"><br>
+        <input type="text" placeholder="Task ID" class="task-id"><br>
+        <input type="text" placeholder="Upload Time (HH:MM:SS)" class="upload-time"><br>
+        <button onclick="generateFormURL(this, '${file.name}', '${durationStr}', '${fileSize}')">📤 Transfer to Google Form</button>
+      `;
+
+            fileList.appendChild(div);
+          };
+        });
+      });
+
+      function formatDuration(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+        return `${mins}:${secs}`;
+      }
+
+      function formatFileSize(bytes) {
+        return (bytes / (1024 ** 3)).toFixed(2); // GB
+      }
+
+      function toggleCheck(btn) {
+        const container = btn.closest('.file-info');
+        container.classList.toggle('checked');
+      }
+
+      function removeFile(btn) {
+        const container = btn.closest('.file-info');
+        container.remove();
+      }
+
+      function generateFormURL(button, fileName, durationStr, fileSize) {
+        const container = button.parentElement;
+
+        const gameAssigned = document.getElementById('gameAssigned').value;
+        const fullName = document.getElementById('fullName').value;
+        const outlierEmail = document.getElementById('outlierEmail').value;
+        const room = document.getElementById('room').value;
+        const shift = document.getElementById('shift').value;
+        const support = document.getElementById('support').value;
+        const stationNo = document.getElementById('station-no').value;
+
+        const uploadID = container.querySelector('.upload-id').value;
+        const taskID = container.querySelector('.task-id').value;
+        const uploadTime = container.querySelector('.upload-time').value;
+
+        const formURL = `https://docs.google.com/forms/d/e/1FAIpQLSeqfp4IQKR5F6EXGd2yRkkNsiKQ0h8iMAEO2oZbsyWvrW8Q9A/viewform?usp=pp_url` +
+          `&entry.1638364155=${encodeURIComponent(gameAssigned)}` +
+          `&entry.165084116=${encodeURIComponent(fullName)}` +
+          `&entry.141333561=${encodeURIComponent(outlierEmail)}` +
+          `&entry.1953828198=${encodeURIComponent(room)}` +
+          `&entry.1736528622=${encodeURIComponent(shift)}` +
+          `&entry.1043362472=${encodeURIComponent(support)}` +
+          `&entry.803718753=${encodeURIComponent(stationNo)}` + // ✅ Seat number
+          `&entry.XXXXX=${encodeURIComponent(fileName)}` +       // Replace with actual entry ID for File Name
+          `&entry.1282936396=${encodeURIComponent(durationStr)}` +
+          `&entry.1711007967=${encodeURIComponent(fileSize)}` +
+          `&entry.703081234=${encodeURIComponent(uploadID)}` +
+          `&entry.1433525718=${encodeURIComponent(taskID)}` +
+          `&entry.1831074472=${encodeURIComponent(uploadTime)}`;
+
+        window.open(formURL, '_blank');
+      }
+    </script>
+
+</body>
+
+</html>
